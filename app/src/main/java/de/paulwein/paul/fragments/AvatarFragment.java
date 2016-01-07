@@ -79,7 +79,7 @@ public class AvatarFragment extends Fragment {
     }
     
     public void speak(String words){
-    	mTts.speak(words, TextToSpeech.QUEUE_FLUSH, null);
+    	mTts.speak(words, TextToSpeech.QUEUE_FLUSH, null, null);
     }
     
 	

@@ -48,6 +48,14 @@
     <string name="bitte_eine_aufgabe_eintragen">Bitte eine Aufgabe eintragen</string>
     <string name="sorry_kein_einlass">Sorry, kein Einlass</string>
     <string name="neuer_ort">Neuer Ort</string>
+    <string name="title_error">Error</string>
+    <string name="press_pushlink_button">Press the link button on the bridge</string>
+    <string name="txt_select_smartbridge">Please select a bridge to use for this app</string>
+    <string name="search_progress">Searching ...</string>
+    <string name="connecting">Connecting ...</string>
+    <string name="menu_find_bridge">Find new Bridge</string>
+    <string name="btn_ok">Ok</string>
+    <string name="txt_pushlink">Pushlink</string>
 
     <string-array name="main_nav_texts">
         <item>Notizen</item>
@@ -75,5 +83,6 @@
     <string name="ort_wurde_hinzugefuegt">Ort wurde hinzugefügt!</string>
     <string name="meine_orte">Meine Orte</string>
     <string name="wifi_location_fehler">Kein Netzwerk konfiguriert, oder Wifi ist deaktiviert!</string>
+    <string name="welcome_home">Willkommen Zuhause Paul. Möchtest du das Licht einschalten?</string>
 
 </resources>

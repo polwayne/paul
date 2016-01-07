@@ -5,9 +5,12 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,11 +18,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import com.philips.lighting.hue.sdk.PHAccessPoint;
+import com.philips.lighting.hue.sdk.PHHueSDK;
+import com.philips.lighting.hue.sdk.PHSDKListener;
+import com.philips.lighting.model.PHBridge;
+import com.philips.lighting.model.PHHueParsingError;
+import com.philips.lighting.model.PHLight;
+import com.philips.lighting.model.PHLightState;
+
+import java.util.List;
+
 import de.paulwein.paul.R;
+import de.paulwein.paul.broadcastreceiver.WifiLocationReceiver;
 import de.paulwein.paul.fragments.AvatarFragment;
+import de.paulwein.paul.hue.HueSharedPreferences;
 import de.paulwein.paul.intelligence.IKI;
 import de.paulwein.paul.intelligence.KI;
 import de.paulwein.paul.intelligence.VoiceRecognizer;
@@ -34,6 +49,9 @@ public class MainActivity extends Activity implements IVoiceRecognition, OnItemC
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
+	private PHHueSDK phHueSDK;
+	HueSharedPreferences prefs;
+	private boolean mHueConnected = false;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,14 +60,112 @@ public class MainActivity extends Activity implements IVoiceRecognition, OnItemC
         initUi();
         mKI = new KI(this, mPaulFragment);
         mVoiceRecognizer = new VoiceRecognizer(this, this);
-//        final String regId = GCMRegistrar.getRegistrationId(this);
-//        if (regId.equals(""))
-//        	GCMRegistrar.register(this, Config.GCM_SENDER_ID);
-//        else 
-//        	Log.e("TAG",regId);
+		initHue();
+
+		if(getIntent().hasExtra(WifiLocationReceiver.HOME)) {
+			Handler h = new Handler();
+			h.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					mPaulFragment.speak(getString(R.string.welcome_home));
+				}
+			},400);
+
+			h.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					mVoiceRecognizer.startRecognizing();
+					mSpeechButton.setEnabled(false);
+					mPaulFragment.showActionView(R.drawable.microphone);
+				}
+			},5000);
+
+		}
     }
-    
-    private void initUi(){
+
+	private void initHue() {
+		phHueSDK = PHHueSDK.create();
+		phHueSDK.setAppName(getString(R.string.app_name));
+		phHueSDK.setDeviceName(Build.MODEL);
+		phHueSDK.getNotificationManager().registerSDKListener(listener);
+
+		prefs = HueSharedPreferences.getInstance(getApplicationContext());
+		String lastIpAddress   = prefs.getLastConnectedIPAddress();
+		String lastUsername    = prefs.getUsername();
+
+		// Automatically try to connect to the last connected IP Address.  For multiple bridge support a different implementation is required.
+		if (lastIpAddress !=null && !lastIpAddress.equals("")) {
+			PHAccessPoint lastAccessPoint = new PHAccessPoint();
+			lastAccessPoint.setIpAddress(lastIpAddress);
+			lastAccessPoint.setUsername(lastUsername);
+
+			if (!phHueSDK.isAccessPointConnected(lastAccessPoint)) {
+				phHueSDK.connect(lastAccessPoint);
+			}
+		}
+	}
+
+	private PHSDKListener listener = new PHSDKListener() {
+
+		@Override
+		public void onCacheUpdated(List<Integer> list, PHBridge phBridge) {
+
+		}
+
+		@Override
+		public void onBridgeConnected(PHBridge b, String username) {
+			phHueSDK.setSelectedBridge(b);
+			phHueSDK.enableHeartbeat(b, PHHueSDK.HB_INTERVAL);
+			phHueSDK.getLastHeartbeat().put(b.getResourceCache().getBridgeConfiguration() .getIpAddress(), System.currentTimeMillis());
+			prefs.setLastConnectedIPAddress(b.getResourceCache().getBridgeConfiguration().getIpAddress());
+			prefs.setUsername(username);
+			mHueConnected = true;
+		}
+
+		@Override
+		public void onAuthenticationRequired(PHAccessPoint phAccessPoint) {
+
+		}
+
+		@Override
+		public void onAccessPointsFound(List<PHAccessPoint> list) {
+
+		}
+
+		@Override
+		public void onError(int i, String s) {
+
+		}
+
+		@Override
+		public void onConnectionResumed(PHBridge phBridge) {
+
+		}
+
+		@Override
+		public void onConnectionLost(PHAccessPoint phAccessPoint) {
+
+		}
+
+		@Override
+		public void onParsingErrors(List<PHHueParsingError> list) {
+
+		}
+	};
+
+	public void toggleLights(boolean onOff){
+		if(mHueConnected){
+			PHBridge bridge = phHueSDK.getSelectedBridge();
+			List<PHLight> lights = bridge.getResourceCache().getAllLights();
+			PHLightState lightState = new PHLightState();
+			lightState.setOn(onOff);
+			for(PHLight l : lights){
+				bridge.updateLightState(l,lightState);
+			}
+		}
+	}
+
+	private void initUi(){
     	mPaulFragment = (AvatarFragment) getFragmentManager().findFragmentById(R.id.avatar_fragment);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -129,6 +245,15 @@ public class MainActivity extends Activity implements IVoiceRecognition, OnItemC
 	@Override
 	public void onDestroy(){
 		mVoiceRecognizer.destroy();
+		PHBridge bridge = phHueSDK.getSelectedBridge();
+		if (bridge != null) {
+
+			if (phHueSDK.isHeartbeatEnabled(bridge)) {
+				phHueSDK.disableHeartbeat(bridge);
+			}
+
+			phHueSDK.disconnect(bridge);
+		}
 		super.onDestroy();
 	}
 	
@@ -168,6 +293,8 @@ public class MainActivity extends Activity implements IVoiceRecognition, OnItemC
 			Intent locationIntent = new Intent(this,LocationsActivity.class); 
 			startActivity(locationIntent);
 			break;
-		}		
+		}
 	}
+
+
 }

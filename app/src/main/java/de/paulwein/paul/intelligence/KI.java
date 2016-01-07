@@ -30,6 +30,8 @@ import de.paulwein.paul.activities.EditNotesActivity;
 import de.paulwein.paul.activities.EditTaskActivity;
 import de.paulwein.paul.activities.KnockActivity;
 import de.paulwein.paul.activities.LockScreenActivity;
+import de.paulwein.paul.activities.MainActivity;
+import de.paulwein.paul.activities.PHHomeActivity;
 import de.paulwein.paul.activities.ShowNotesActivity;
 import de.paulwein.paul.activities.ShowTasksActivity;
 import de.paulwein.paul.activities.SplashActivity;
@@ -37,6 +39,7 @@ import de.paulwein.paul.apis.GoogleImages;
 import de.paulwein.paul.apis.GoogleWeather;
 import de.paulwein.paul.apis.Wikipedia;
 import de.paulwein.paul.broadcastreceiver.AlarmReceiver;
+import de.paulwein.paul.broadcastreceiver.WifiLocationReceiver;
 import de.paulwein.paul.config.Config;
 import de.paulwein.paul.contentprovider.AlarmsProvider;
 import de.paulwein.paul.database.DatabaseTables.AlarmColumns;
@@ -160,9 +163,19 @@ public class KI implements IKI {
 		else if(action.startsWith("backup")){
 			mContext.startService(new Intent(ExportService.ACTION_EXPORT_NOTES));
 			mAvatarFragment.saySomething("Backup wurde angelegt!");
-		}
-		else
+		} else if (action.startsWith("kalibriere lichter")){
+			Intent calibrate = new Intent(mContext, PHHomeActivity.class);
+			mContext.startActivity(calibrate);
+		} else if(action.startsWith("licht an")){
+			((MainActivity)mContext).toggleLights(true);
+		} else if(action.startsWith("licht aus")){
+		((MainActivity)mContext).toggleLights(false);
+		} else if(action.equalsIgnoreCase("ja")) {
+			if(((MainActivity)mContext).getIntent().hasExtra(WifiLocationReceiver.HOME))
+				((MainActivity)mContext).toggleLights(true);
+		} else{
 			mAvatarFragment.saySomething(action);
+		}
 	}
 	
 	private String getNextAppointment(){
