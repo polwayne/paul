@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="ParserError">
+        <ignore path="src/de/paulwein/paul/broadcastreceiver/AlarmReceiver.java" />
+        <ignore path="src/de/paulwein/paul/voice/Semantics.java" />
+    </issue>
+</lint>

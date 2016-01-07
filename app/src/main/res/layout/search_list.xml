@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/green" >    
+	<TextView
+        android:id="@+id/tv_headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="@string/suchergebnisse"
+        android:textColor="@color/black"/>
+
+	<ListView
+	    android:id="@android:id/list"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="20dp" >
+	</ListView>
+	<TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="@string/keine_notizen_gefunden"
+        android:textColor="@color/black"/>
+	
+</LinearLayout>

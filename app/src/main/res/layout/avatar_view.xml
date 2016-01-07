@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/green">
+<ImageView
+    android:id="@+id/iv_avatar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="20dp"
+    android:contentDescription="@string/paul" />
+
+<TextView
+    android:id="@+id/tv_speechbubble"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:background="@drawable/speechbubble"
+    android:visibility="gone"/>
+
+<ImageView
+    android:id="@+id/iv_action"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_margin="20dp"
+    android:visibility="gone" />
+
+<ImageView
+    android:id="@+id/iv_image_frame"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_centerInParent="true"
+    android:background="@drawable/frame"
+    android:scaleType="fitCenter"
+    android:visibility="gone" />
+
+</RelativeLayout>

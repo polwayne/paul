@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Paul</string>
+    <string name="personal_assistant">personal assistant</string>
+    <string name="paul">Paul</string>
+    <string name="welcome">Welcome</string>
+    <string name="speichern">Speichern</string>
+    <string name="notizen">Notizen</string>
+    <string name="neue_notiz">Neue Notiz</string>
+    <string name="betreff">Betreff</string>
+    <string name="notiz">Notiz</string>
+    <string name="bearbeiten">Bearbeiten</string>
+    <string name="loeschen">Löschen</string>
+    <string name="alle_notizen">Alle Notizen</string>
+    <string name="paola">Paola</string>
+    <string name="loeschen_dialog_text">Möchtest du die Notiz wirklich löschen?</string>
+    <string name="list_loeschen_dialog_text">Möchtest du die Liste wirklich löschen?</string>
+    <string name="bitte_betreff_angeben">Bitte Betreff angeben.</string>
+    <string name="bitte_notiz_eintragen">Bitte Notiz eintragen.</string>
+    <string name="keine_termine">Keine Termine</string>
+    <string name="title_section2">Erinnerungen</string>
+    <string name="title_section1">Wecker</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_config">ConfigActivity</string>
+    <string name="aktionen">Aktionen</string>
+    <string name="aufgaben">Aufgaben</string>
+    <string name="privat">Privat</string>
+    <string name="neue_liste_erstellen">Neue Liste erstellen</string>
+    <string name="name_der_liste">Name der Liste</string>
+    <string name="neue_liste">Neue Liste</string>
+    <string name="liste_umbenennen">Liste umbenennen</string>
+    <string name="liste_loeschen">Liste Löschen</string>
+    <string name="ja">Ja</string>
+    <string name="nein">Nein</string>
+    <string name="neue_aufgabe">Neue Aufgabe</string>
+    <string name="aufgabe">Aufgabe</string>
+    <string name="kategorie">Kategorie</string>
+    <string name="prioritaet">Priorität</string>
+    <string name="erledigt">Erledigt</string>
+    <string name="nicht_erledigt">Nicht erledigt</string>
+    <string name="keine">Keine</string>
+    <string name="_10_min">10 Min</string>
+    <string name="_1_tag">1 Tag</string>
+    <string name="erinnerung">Erinnerung</string>
+    <string name="faellig_am">Fällig am</string>
+    <string name="bitte_eine_aufgabe_eintragen">Bitte eine Aufgabe eintragen</string>
+    <string name="sorry_kein_einlass">Sorry, kein Einlass</string>
+    <string name="neuer_ort">Neuer Ort</string>
+
+    <string-array name="main_nav_texts">
+        <item>Notizen</item>
+        <item>Aufgaben</item>
+        <item>Alarme</item>
+        <item>Meine Orte</item>
+    </string-array>
+    
+    <string-array name="location_modes">
+        <item>Wifi</item>
+	</string-array>
+	
+    <string name="es_ist_ein_fehler_aufgetreten">Es ist ein Fehler aufgetreten!</string>
+    <string name="title_activity_alarm">AlarmActivity</string>
+    <string name="alarm">Alarm</string>
+    <string name="search_hint">Nach Notizen suchen</string>
+    <string name="menu_search">Suche</string>
+    <string name="in_10_minuten_nochmal">In 10 Minuten nochmal</string>
+    <string name="sprachbefehl">Sprachbefehl</string>
+    <string name="suchergebnisse">Suchergebnisse</string>
+    <string name="keine_notizen_gefunden">Keine Notizen gefunden</string>
+    <string name="hallo_paul">Hallo Paul!</string>
+    <string name="hallo_paola">Hallo Paola!</string>
+    <string name="name">Name</string>
+    <string name="ort_wurde_hinzugefuegt">Ort wurde hinzugefügt!</string>
+    <string name="meine_orte">Meine Orte</string>
+    <string name="wifi_location_fehler">Kein Netzwerk konfiguriert, oder Wifi ist deaktiviert!</string>
+
+</resources>

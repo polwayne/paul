@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+      <item android:id="@+id/action_add_note"
+          android:icon="@android:drawable/ic_menu_add"
+          android:title="@string/neue_notiz"
+           android:showAsAction="ifRoom|withText" />
+		<item android:id="@+id/action_edit"
+          android:title="@string/bearbeiten"
+           android:showAsAction="never" />
+      <item android:id="@+id/action_export"
+          android:title="Exportieren"
+           android:showAsAction="never" />
+</menu>

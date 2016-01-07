@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/orange">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/neue_notiz" 
+        android:textSize="60sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+ 
+    <EditText
+        android:id="@+id/et_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/betreff"
+        android:ems="10" />
+	<EditText
+        android:id="@+id/et_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/notiz"
+        android:minLines="5"
+        android:gravity="bottom"
+        android:ems="10" />
+
+	<Spinner
+	    android:id="@+id/spinner_list"
+	    android:layout_marginTop="20dp"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" />
+
+</LinearLayout>

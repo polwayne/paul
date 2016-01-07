@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+		<item android:id="@+id/action_new_list"
+		    android:icon="@android:drawable/ic_menu_add"
+          android:title="@string/neue_liste"
+           android:showAsAction="ifRoom|withText" />
+      <item android:id="@+id/action_edit_list"
+          android:icon="@android:drawable/ic_menu_edit"
+          android:title="@string/liste_umbenennen"
+           android:showAsAction="ifRoom|withText" />
+      <item android:id="@+id/action_delete_list"
+        android:title="@string/liste_loeschen"
+		android:icon="@android:drawable/ic_menu_delete"
+        android:showAsAction="ifRoom|withText" />
+</menu>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/neue_aufgabe"
+            android:textColor="@color/black"
+            android:textSize="50sp" />
+
+    <Switch
+        android:id="@+id/switch_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="@string/nicht_erledigt"
+        android:textOn="@string/erledigt"
+        android:textColor="@color/black" />
+    
+	<TextView
+        android:id="@+id/tv_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" />
+
+	<TextView
+	    android:id="@+id/tv_lbl_priority"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/prioritaet"
+	    android:layout_marginLeft="20dp"
+	    android:textSize="20sp" 
+	    android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/tv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"/>
+	<RatingBar
+	    android:id="@+id/rb_priority"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="20dp"
+	    android:max="5"
+	    android:layout_gravity="center_horizontal"
+	    android:stepSize="1" />
+	
+	<TextView
+	    android:id="@+id/tv_lbl_date"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/faellig_am"
+	    android:layout_marginLeft="20dp"
+	    android:textSize="20sp" 
+	    android:textColor="@color/black" />
+<TextView
+        android:id="@+id/tv_settlement_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"/>
+	<TextView
+	    android:id="@+id/tv_lbl_reminder"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/erinnerung"
+	    android:layout_marginLeft="20dp"
+	    android:textSize="20sp" 
+		android:textColor="@color/black" />
+	<RadioGroup
+	    android:id="@+id/rg_reminder"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_margin="20dp" >
+
+	    <RadioButton
+	        android:id="@+id/r_none"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:checked="true"
+	        android:text="@string/keine" 
+	        android:enabled="false"/>
+
+		<RadioButton
+	        android:id="@+id/r_ten_mins"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/_10_min"
+	        android:enabled="false" />
+
+	    <RadioButton
+	        android:id="@+id/r_one_day"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/_1_tag" 
+	        android:enabled="false"/>
+	</RadioGroup>
+
+</LinearLayout>
+</ScrollView>
