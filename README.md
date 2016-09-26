@@ -28,4 +28,4 @@ Private home control app
 ![Reminder](https://raw.githubusercontent.com/polwayne/paul/master/images/reminder.png)
 ![Notes](https://raw.githubusercontent.com/polwayne/paul/master/images/notes.png)
 ![Create Note](https://raw.githubusercontent.com/polwayne/paul/master/images/note.png)
-![Show Note](https://raw.githubusercontent.com/polwayne/paul/master/images/shownotes.png)
+![Show Note](https://raw.githubusercontent.com/polwayne/paul/master/images/shownote.png)
