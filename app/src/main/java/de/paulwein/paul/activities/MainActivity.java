@@ -28,6 +28,7 @@ import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHHueParsingError;
 import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
+import com.philips.lighting.model.PHScene;
 
 import java.util.List;
 
@@ -161,6 +162,20 @@ public class MainActivity extends Activity implements IVoiceRecognition, OnItemC
 			lightState.setOn(onOff);
 			for(PHLight l : lights){
 				bridge.updateLightState(l,lightState);
+			}
+		}
+	}
+
+	public void activateScene(String key){
+		if(mHueConnected) {
+			PHBridge bridge = phHueSDK.getSelectedBridge();
+			List<PHScene> scences = bridge.getResourceCache().getAllScenes();
+			for (PHScene s : scences) {
+				if(s.getName().toUpperCase().startsWith(key.toUpperCase())){
+					bridge.activateScene(s.getSceneIdentifier(),"0",null);
+					Log.e("TAG","activtaed scene " + s.getName());
+					return;
+				}
 			}
 		}
 	}

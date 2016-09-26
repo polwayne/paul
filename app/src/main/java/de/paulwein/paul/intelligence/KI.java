@@ -173,6 +173,11 @@ public class KI implements IKI {
 		} else if(action.equalsIgnoreCase("ja")) {
 			if(((MainActivity)mContext).getIntent().hasExtra(WifiLocationReceiver.HOME))
 				((MainActivity)mContext).toggleLights(true);
+		} else if(action.startsWith("aktiviere")) {
+				String[] words = action.split(" ");
+				if(words.length > 1) {
+					((MainActivity) mContext).activateScene(words[1]);
+				}
 		} else{
 			mAvatarFragment.saySomething(action);
 		}

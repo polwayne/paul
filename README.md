@@ -20,4 +20,12 @@ Private home control app
 - who is? what is? (wikipedia lookup)
 - where is? (google maps lookup)
 - google weather
-- Philipps Hue integration (turn on lights, set scences)
+- Philips Hue integration (turn on lights, set scences)
+
+
+![Splashscreen](https://raw.githubusercontent.com/polwayne/paul/master/images/splash.png)
+![Hello](https://raw.githubusercontent.com/polwayne/paul/master/images/hello.png)
+![Reminder](https://raw.githubusercontent.com/polwayne/paul/master/images/reminder.png)
+![Notes](https://raw.githubusercontent.com/polwayne/paul/master/images/notes.png)
+![Create Note](https://raw.githubusercontent.com/polwayne/paul/master/images/note.png)
+![Show Note](https://raw.githubusercontent.com/polwayne/paul/master/images/shownotes.png)
