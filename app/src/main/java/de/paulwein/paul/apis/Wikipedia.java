@@ -25,7 +25,7 @@ import android.util.Log;
 
 public class Wikipedia {
 	
-	private static final String WIKIPEDIA_URL = "http://de.wikipedia.org/w/api.php?action=opensearch&format=xml&limit=1&search=";
+	private static final String WIKIPEDIA_URL = "https://de.wikipedia.org/w/api.php?action=opensearch&format=xml&limit=1&search=";
 	
 	
 	public String search(String search){
